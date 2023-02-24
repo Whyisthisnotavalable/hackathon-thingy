@@ -1,7 +1,7 @@
 //throw new Error('hi') //tested, and works!
 let body = document.querySelector("body")
 const randomChar = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123467890!@#$%^&*()';
-const badChar = ['whatarepasswords', 'password', 'fr', 'bruh', 'badspelling', 'undefined', 'null', '0000'];
+const badChar = '123467890';
 var worstChar = [
   "ability","able","aboard","about","above","accept","accident","according",
   "account","accurate","acres","across","act","action","active","activity",
@@ -159,7 +159,7 @@ var worstChar = [
   "planning","plant","plastic","plate","plates","play","pleasant","please",
   "pleasure","plenty","plural","plus","pocket","poem","poet","poetry",
   "point","pole","police","policeman","political","pond","pony","pool",
-  "poor","popular","population","porch","port","position","positive","possible",
+  "poor","popular","population","porch","port",'pork',"position","positive","possible",
   "possibly","post","pot","potatoes","pound","pour","powder","power",
   "powerful","practical","practice","prepare","present","president","press","pressure",
   "pretty","prevent","previous","price","pride","primitive","principal","principle",
@@ -255,28 +255,46 @@ function getOptions() {
 		chosen += letter;
 	}	
 	let chosen2 = ""; 
-	for(let i = 0, len = 3; i < len; i++) {
-		let letter = badChar[Math.floor(badChar.length * Math.random())];
+	for(let i = 0, len = 10; i < len; i++) {
+		let letter = badChar.charAt(Math.floor(badChar.length * Math.random()));
 		chosen2 += letter;
-		chosen2 = chosen2.replaceAll(',','')
 	}	
 	let chosen3 = ""; 
-	for(let i = 0, len = 1; i < len; i++) {
+	for(let i = 0, len = 2; i < len; i++) {
 		let letter = worstChar[Math.floor(worstChar.length * Math.random())];
-		chosen3 += letter;
-		chosen3 = chosen3.replaceAll(',','');
+		chosen3 += letter + (i < 1 ? ' ' : '');
+		chosen3 = chosen3.replaceAll(' ','-');
 	}
+	let chosenX = [chosen, chosen2, chosen3];
+	shuffle(chosenX)
 	document.querySelector("#options").innerHTML = 
 	`<div id="one">${
-	chosen
+	chosenX[0]
 	}</div>
 	<br><div id="two">${
-	chosen2
+	chosenX[1]
 	}</div>
 	<br><div id="three">${
-	chosen3
+	chosenX[2]
 	}</div>`;
 	return false;
+}
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
 }
 /*
 window.addEventListener('DOMContentLoaded', function() {
