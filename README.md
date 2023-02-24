@@ -1,2 +1,1 @@
-# hackathon-thingy
-idk
+# Hackathon Stuff
