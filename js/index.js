@@ -1,8 +1,8 @@
 //throw new Error('hi') //tested, and works!
-let body = document.querySelector("body")
+let options = document.querySelector(".mainButton")
 const randomChar = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123467890!@#$%^&*()';
 const badChar = '123467890';
-var worstChar = [
+var worstChar = [ //random words xd
   "ability","able","aboard","about","above","accept","accident","according",
   "account","accurate","acres","across","act","action","active","activity",
   "actual","actually","add","addition","additional","adjective","adult","adventure",
@@ -248,12 +248,15 @@ var worstChar = [
   "year","yellow","yes","yesterday","yet","you","young","younger",
   "your","yourself","youth","zero","zebra","zipper","zoo","zulu"
 ];
+let index = 1;
 function getOptions() {
 	let chosen = ""; 
 	for(let i = 0, len = 10; i < len; i++) {
 		let letter = randomChar.charAt(Math.floor(randomChar.length * Math.random()));
 		chosen += letter;
-	}	
+	}
+	const decided = chosen;
+	chosen += "Ω";
 	let chosen2 = ""; 
 	for(let i = 0, len = 10; i < len; i++) {
 		let letter = badChar.charAt(Math.floor(badChar.length * Math.random()));
@@ -267,18 +270,61 @@ function getOptions() {
 	}
 	let chosenX = [chosen, chosen2, chosen3];
 	shuffle(chosenX)
-	document.querySelector("#options").innerHTML = 
-	`<div id="one">${
-	chosenX[0]
-	}</div>
-	<br><div id="two">${
-	chosenX[1]
-	}</div>
-	<br><div id="three">${
-	chosenX[2]
-	}</div>`;
+	if(chosenX[0].includes("Ω")) {
+		chosenX[0] = decided;
+		document.querySelector("#options").innerHTML = 
+		`<button onclick="log('Choosing a password like this will ensure that you will be safer online'); getOptions()" style="top: 50px;"id="one">${
+		chosenX[0]
+		}</button>
+		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 100px;"id="two">${
+		chosenX[1]
+		}</button>
+		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 150px;"id="three">${
+		chosenX[2]
+		}</button>`;
+	} 
+	if(chosenX[1].includes("Ω")) {
+		chosenX[1] = decided;
+		document.querySelector("#options").innerHTML = 
+		`<button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 50px;"id="one">${
+		chosenX[0]
+		}</button>
+		<br><button onclick="log('Choosing a password like this will ensure that you will be safer online'); getOptions()" style="top: 100px;"id="two">${
+		chosenX[1]
+		}</button>
+		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 150px;"id="three">${
+		chosenX[2]
+		}</button>`;
+	} 
+	if(chosenX[2].includes("Ω")) {
+		chosenX[2] = decided;
+		document.querySelector("#options").innerHTML = 
+		`<button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 50px;"id="one">${
+		chosenX[0]
+		}</button>
+		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 100px;"id="two">${
+		chosenX[1]
+		}</button>
+		<br><button onclick="log('Choosing a password like this will ensure that you will be safer online'); getOptions()" style="top: 150px;"id="three">${
+		chosenX[2]
+		}</button>`;
+	}
+	document.querySelector(".choose").innerHTML += '<div>>New Options Created</div>';
+	document.querySelector(".anime").innerHTML = ``;
+	for(let i = 0; i < index; i++) {
+		document.querySelector(".anime").innerHTML += `<br>`;
+	}
+	document.querySelector(".anime").innerHTML += `>`;
+	index++;
 	return false;
 }
+options.addEventListener('click', getOptions, false)
+window.addEventListener('contextmenu', function(event) {
+	event.preventDefault();
+	index = 0;
+	document.querySelector(".choose").innerHTML = '';
+	document.querySelector(".anime").innerHTML = `>`;
+}, false)
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
 
@@ -296,8 +342,12 @@ function shuffle(array) {
 
   return array;
 }
-/*
-window.addEventListener('DOMContentLoaded', function() {
-	window.addEventListener("click", getOptions, true)
-});	
-*/
+function log(message) {
+	document.querySelector(".choose").innerHTML += "<div>>" + message + "</div>";
+	document.querySelector(".anime").innerHTML = ``;
+	for(let i = 0; i < index; i++) {
+		document.querySelector(".anime").innerHTML += `<br>`;
+	}
+	document.querySelector(".anime").innerHTML += `>`;
+	index++;
+}
