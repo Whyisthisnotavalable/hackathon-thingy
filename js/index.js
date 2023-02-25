@@ -1,8 +1,9 @@
 //throw new Error('hi') //tested, and works!
-let options = document.querySelector(".mainButton")
+const options = document.querySelector(".mainButton");
+const consoleX = document.querySelector(".console");
 const randomChar = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123467890!@#$%^&*()';
 const badChar = '123467890';
-var worstChar = [ //random words xd
+const worstChar = [ //random words xd
   "ability","able","aboard","about","above","accept","accident","according",
   "account","accurate","acres","across","act","action","active","activity",
   "actual","actually","add","addition","additional","adjective","adult","adventure",
@@ -248,8 +249,9 @@ var worstChar = [ //random words xd
   "year","yellow","yes","yesterday","yet","you","young","younger",
   "your","yourself","youth","zero","zebra","zipper","zoo","zulu"
 ];
-let index = 1;
 function getOptions() {
+	setTimeout(function() {consoleX.scrollTo(0, consoleX.scrollHeight);}, 100)
+	document.querySelector("#options").innerHTML = '';
 	let chosen = ""; 
 	for(let i = 0, len = 10; i < len; i++) {
 		let letter = randomChar.charAt(Math.floor(randomChar.length * Math.random()));
@@ -261,69 +263,89 @@ function getOptions() {
 	for(let i = 0, len = 10; i < len; i++) {
 		let letter = badChar.charAt(Math.floor(badChar.length * Math.random()));
 		chosen2 += letter;
-	}	
+	}
+	const decided2 = chosen2;
+	chosen2 += "δ";
 	let chosen3 = ""; 
 	for(let i = 0, len = 2; i < len; i++) {
 		let letter = worstChar[Math.floor(worstChar.length * Math.random())];
 		chosen3 += letter + (i < 1 ? ' ' : '');
 		chosen3 = chosen3.replaceAll(' ','-');
 	}
+	const decided3 = chosen3;
+	chosen3 += "Θ";
 	let chosenX = [chosen, chosen2, chosen3];
 	shuffle(chosenX)
 	if(chosenX[0].includes("Ω")) {
 		chosenX[0] = decided;
-		document.querySelector("#options").innerHTML = 
-		`<button onclick="log('Choosing a password like this will ensure that you will be safer online'); getOptions()" style="top: 50px;"id="one">${
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Choosing a password like this will ensure that you will be safer online', true); getOptions()" style="top: 50px;"id="one">${
 		chosenX[0]
-		}</button>
-		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 100px;"id="two">${
-		chosenX[1]
-		}</button>
-		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 150px;"id="three">${
-		chosenX[2]
 		}</button>`;
 	} 
 	if(chosenX[1].includes("Ω")) {
 		chosenX[1] = decided;
-		document.querySelector("#options").innerHTML = 
-		`<button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 50px;"id="one">${
-		chosenX[0]
-		}</button>
-		<br><button onclick="log('Choosing a password like this will ensure that you will be safer online'); getOptions()" style="top: 100px;"id="two">${
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Correct. Keep this it as it is.', true); getOptions()" style="top: 100px;"id="two">${
 		chosenX[1]
-		}</button>
-		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 150px;"id="three">${
-		chosenX[2]
 		}</button>`;
 	} 
 	if(chosenX[2].includes("Ω")) {
 		chosenX[2] = decided;
-		document.querySelector("#options").innerHTML = 
-		`<button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 50px;"id="one">${
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('', true); getOptions()" style="top: 150px;"id="three">${
+		chosenX[2]
+		}</button>`;
+	}	
+	if(chosenX[0].includes("δ")) {
+		chosenX[0] = decided2;
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Incorrect', true); getOptions()" style="top: 50px;"id="one">${
 		chosenX[0]
-		}</button>
-		<br><button onclick="log('Wrong. You will be more vulnerable to hackers by choosing a weak password'); getOptions()" style="top: 100px;"id="two">${
+		}</button>`;
+	} 
+	if(chosenX[1].includes("δ")) {
+		chosenX[1] = decided2;
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Incorrect', true); getOptions()" style="top: 100px;"id="two">${
 		chosenX[1]
-		}</button>
-		<br><button onclick="log('Choosing a password like this will ensure that you will be safer online'); getOptions()" style="top: 150px;"id="three">${
+		}</button>`;
+	} 
+	if(chosenX[2].includes("δ")) {
+		chosenX[2] = decided2;
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Incorrect', true); getOptions()" style="top: 150px;"id="three">${
+		chosenX[2]
+		}</button>`;
+	}	
+	if(chosenX[0].includes("Θ")) {
+		chosenX[0] = decided3;
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Incorrect', true); getOptions()" style="top: 50px;"id="one">${
+		chosenX[0]
+		}</button>`;
+	} 
+	if(chosenX[1].includes("Θ")) {
+		chosenX[1] = decided3;
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Incorrect', true); getOptions()" style="top: 100px;"id="two">${
+		chosenX[1]
+		}</button>`;
+	} 
+	if(chosenX[2].includes("Θ")) {
+		chosenX[2] = decided3;
+		document.querySelector("#options").innerHTML += 
+		`<button onclick="log('Incorrect', true); getOptions()" style="top: 150px;"id="three">${
 		chosenX[2]
 		}</button>`;
 	}
-	document.querySelector(".choose").innerHTML += '<div>>New Options Created</div>';
-	document.querySelector(".anime").innerHTML = ``;
-	for(let i = 0; i < index; i++) {
-		document.querySelector(".anime").innerHTML += `<br>`;
-	}
-	document.querySelector(".anime").innerHTML += `>`;
-	index++;
+	log('<div>>New Options Created</div>');
 	return false;
 }
 options.addEventListener('click', getOptions, false)
 window.addEventListener('contextmenu', function(event) {
 	event.preventDefault();
-	index = 0;
 	document.querySelector(".choose").innerHTML = '';
-	document.querySelector(".anime").innerHTML = `>`;
 }, false)
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
@@ -342,12 +364,10 @@ function shuffle(array) {
 
   return array;
 }
-function log(message) {
-	document.querySelector(".choose").innerHTML += "<div>>" + message + "</div>";
-	document.querySelector(".anime").innerHTML = ``;
-	for(let i = 0; i < index; i++) {
-		document.querySelector(".anime").innerHTML += `<br>`;
+function log(message, br = false) {
+	if(br == false) {
+		document.querySelector(".choose").innerHTML += "<div>" + message + "</div>";
+	} else {
+		document.querySelector(".choose").innerHTML += "<div>" + ">" + message + "</div>";
 	}
-	document.querySelector(".anime").innerHTML += `>`;
-	index++;
 }
