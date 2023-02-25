@@ -286,7 +286,7 @@ function getOptions() {
 	if(chosenX[1].includes("Ω")) {
 		chosenX[1] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Correct. Keep this it as it is.', true); getOptions()" style="top: 100px;"id="two">${
+		`<button onclick="log('This is a strong password.', true); getOptions()" style="top: 100px;"id="two">${
 		chosenX[1]
 		}</button>`;
 	} 
@@ -300,14 +300,14 @@ function getOptions() {
 	if(chosenX[0].includes("δ")) {
 		chosenX[0] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Incorrect', true); getOptions()" style="top: 50px;"id="one">${
+		`<button onclick="log('Incorrect, as strong passwords include letters and symbols.', true); getOptions()" style="top: 50px;"id="one">${
 		chosenX[0]
 		}</button>`;
 	} 
 	if(chosenX[1].includes("δ")) {
 		chosenX[1] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Incorrect, this password only has numbers. Strong passwords include letters and symbols.', true); getOptions()" style="top: 100px;"id="two">${
+		`<button onclick="log('Incorrect, this password only has numbers.', true); getOptions()" style="top: 100px;"id="two">${
 		chosenX[1]
 		}</button>`;
 	} 
