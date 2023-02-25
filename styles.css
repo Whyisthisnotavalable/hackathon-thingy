@@ -72,7 +72,7 @@ button:active{
 	animation: anime 2000ms ease-in-out infinite;
 }
 #Matrix {
-	opacity: 0.9;
+	opacity: 0.3;
 	position: absolute;
 	width: 100vw;
 	height: 120vh;
@@ -97,6 +97,6 @@ div::-webkit-scrollbar {
 }
 
 div::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-  background-color: #555;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #00ff0011;
 }
