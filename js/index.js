@@ -293,7 +293,7 @@ function getOptions() {
 	if(chosenX[2].includes("Ω")) {
 		chosenX[2] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('', true); getOptions()" style="top: 150px;"id="three">${
+		`<button onclick="log('This password will help you stay safer online because it is fully random; there are uppercase and lowercase letters, there are numbers, and there are also special characters. these characteristics in a password help you stay safer.', true); getOptions()" style="top: 150px;"id="three">${
 		chosenX[2]
 		}</button>`;
 	}	
@@ -307,35 +307,35 @@ function getOptions() {
 	if(chosenX[1].includes("δ")) {
 		chosenX[1] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Incorrect', true); getOptions()" style="top: 100px;"id="two">${
+		`<button onclick="log('Incorrect, this password only has numbers. Strong passwords include letters and symbols.', true); getOptions()" style="top: 100px;"id="two">${
 		chosenX[1]
 		}</button>`;
 	} 
 	if(chosenX[2].includes("δ")) {
 		chosenX[2] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Incorrect', true); getOptions()" style="top: 150px;"id="three">${
+		`<button onclick="log('Incorrect, this password only has numbers. Strong passwords include letters and symbols.', true); getOptions()" style="top: 150px;"id="three">${
 		chosenX[2]
 		}</button>`;
 	}	
 	if(chosenX[0].includes("Θ")) {
 		chosenX[0] = decided3;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Incorrect', true); getOptions()" style="top: 50px;"id="one">${
+		`<button onclick="log('Incorrect, though this would be a great username.', true); getOptions()" style="top: 50px;"id="one">${
 		chosenX[0]
 		}</button>`;
 	} 
 	if(chosenX[1].includes("Θ")) {
 		chosenX[1] = decided3;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Incorrect', true); getOptions()" style="top: 100px;"id="two">${
+		`<button onclick="log('Incorrect, passwords with words in them are easy to guess, and hackers try these words first.', true); getOptions()" style="top: 100px;"id="two">${
 		chosenX[1]
 		}</button>`;
 	} 
 	if(chosenX[2].includes("Θ")) {
 		chosenX[2] = decided3;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Incorrect', true); getOptions()" style="top: 150px;"id="three">${
+		`<button onclick="log('Incorrect, passwords with words in them are easy to guess, and hackers try these words first.', true); getOptions()" style="top: 150px;"id="three">${
 		chosenX[2]
 		}</button>`;
 	}
