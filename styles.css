@@ -1,0 +1,84 @@
+body {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	margin: 0;
+	background-color: black;
+	color: white;
+	font-family: monospace;
+}
+button {
+	font-family: monospace;
+	padding: 0.3em;
+	background-color: darkgray;
+	color: white;
+	position: absolute;
+	box-shadow: 0px 5px gray;
+	border: none;
+	border-radius: 5px;
+	margin-left: 46vw;
+}
+button:hover {
+	background-color: lightgray;
+}
+button:active{
+	background-color: #686868;
+	box-shadow: 0px 3px gray; 
+	margin-top: 2px;
+}
+.mainButton {
+	left: calc(50vw - 3em - 5px);
+	top: 300px;
+	padding: 0.5em;
+	width: calc(6em + 10px);
+	background-color: darkgray;
+	color: white;
+	position: absolute;
+	box-shadow: 0px 5px gray;
+	border: none;
+	border-radius: 5px;
+	margin: 0;
+}
+.mainButton:hover {
+	background-color: lightgray;
+}
+.mainButton:active {
+	background-color: #686868;
+	box-shadow: 0px 3px gray; 
+}
+.console {
+	width: 25vw;
+	height: calc(100vh);
+	border-left: 5px solid white;
+	position: absolute;
+    overflow-y: scroll;
+	overflow-x: hidden;
+}
+.choose {
+	position: absolute;
+}
+.anime {
+	animation: anime 2000ms ease-in-out infinite;
+}
+@keyframes anime{
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+div::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #000000;
+}
+
+div::-webkit-scrollbar {
+  width: 12px;
+  background-color: #000000;
+}
+
+div::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #555;
+}
