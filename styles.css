@@ -78,6 +78,13 @@ button:active{
 	height: 120vh;
 	overflow: hidden;
 }
+.points {
+	top: 5px;
+	right: 5px;
+	position: absolute;
+	padding: 3em;
+	background-color: black;
+}
 @keyframes anime{
 	from {
 		opacity: 1;
