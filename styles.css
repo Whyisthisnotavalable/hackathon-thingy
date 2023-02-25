@@ -4,61 +4,79 @@ body {
 	position: absolute;
 	margin: 0;
 	background-color: black;
-	color: white;
+	color: lime;
 	font-family: monospace;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow: hidden;
 }
 button {
 	font-family: monospace;
 	padding: 0.3em;
-	background-color: darkgray;
-	color: white;
+	background-color: black;
+	color: lime;
 	position: absolute;
-	box-shadow: 0px 5px gray;
+	box-shadow: 0px 5px #222222;
 	border: none;
 	border-radius: 5px;
-	margin-left: 46vw;
+	margin-left: calc(50vw - 6em);
+	text-align: center;
+	width: 12em;
+	border: 1px solid lime;
 }
 button:hover {
-	background-color: lightgray;
+	background-color: #333333;
 }
 button:active{
 	background-color: #686868;
-	box-shadow: 0px 3px gray; 
+	box-shadow: 0px 3px #222222; 
 	margin-top: 2px;
+
 }
 .mainButton {
 	left: calc(50vw - 3em - 5px);
 	top: 300px;
 	padding: 0.5em;
 	width: calc(6em + 10px);
-	background-color: darkgray;
-	color: white;
+	background-color: black;
+	color: lime;
 	position: absolute;
-	box-shadow: 0px 5px gray;
+	box-shadow: 0px 5px #222222;
 	border: none;
 	border-radius: 5px;
 	margin: 0;
 }
 .mainButton:hover {
-	background-color: lightgray;
+	background-color: #333333;
 }
 .mainButton:active {
 	background-color: #686868;
-	box-shadow: 0px 3px gray; 
+	box-shadow: 0px 3px #333333; 
 }
 .console {
 	width: 25vw;
-	height: calc(100vh);
-	border-left: 5px solid white;
-	position: absolute;
+	height: 100vh;
+	border-left: 5px solid lime;
+	position: fixed;
     overflow-y: scroll;
 	overflow-x: hidden;
 }
 .choose {
-	position: absolute;
+
 }
 .anime {
 	animation: anime 2000ms ease-in-out infinite;
+}
+#Matrix {
+	opacity: 0.9;
+	position: absolute;
+	width: 100vw;
+	height: 120vh;
+	overflow: hidden;
 }
 @keyframes anime{
 	from {
