@@ -526,9 +526,7 @@ function getSource(index, fake = false) {
 	}
 	log('>Options created')
 }
-let passwordBase = worstChar[Math.floor(Math.random() * (worstChar.length))]
-let passwordBase2 = worstChar[Math.floor(Math.random() * (worstChar.length))]
-let password_W = passwordBase.charAt(0).toUpperCase() + passwordBase.slice(1) + passwordBase2.charAt(0).toUpperCase() + passwordBase2.slice(1)
+
 let possibleChar = "1234567890~!@#$%^&*)("
 let chosenCharactar = ''
 function chooseCharactar() {
@@ -536,6 +534,10 @@ function chooseCharactar() {
   return chosenCharactar
 }
 function realPassword() {
+  let passwordBase = worstChar[Math.floor(Math.random() * (worstChar.length))]
+  let passwordBase2 = worstChar[Math.floor(Math.random() * (worstChar.length))]
+  let password_W = passwordBase.charAt(0).toUpperCase() + passwordBase.slice(1) + passwordBase2.charAt(0).toUpperCase() + passwordBase2.slice(1)
+  document.querySelector("#options").innerHTML = '';
   for(let i = 0; i < password_W.length; i++) {
     chooseCharactar()
 	let stuff1 = [password_W.slice(0, i), chosenCharactar, password_W.slice(i)];
@@ -548,6 +550,7 @@ function realPassword() {
   password_W = password_W.replace('a', '@')
   password_W = password_W.replace('s', '$')
   password_W = password_W.replace(worstChar[Math.floor(Math.random() * (worstChar.length))])
+
   document.querySelector("#options").innerHTML = '<button style="top: 150px;">' + password_W + '</button>';
   copyTextToClipboard(password_W);
   return password_W
@@ -603,9 +606,9 @@ function copyTextToClipboard(text) {
   try {
     var successful = document.execCommand('copy');
     var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Copying text command was ' + msg);
+    log('>Copying text command was ' + msg);
   } catch (err) {
-    console.log('Oops, unable to copy');
+    log('>Oops, unable to copy');
   }
 
   document.body.removeChild(textArea);
