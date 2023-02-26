@@ -23,7 +23,7 @@ const draw = () => {
 	ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	
-	ctx.fillStyle = '#0F0';
+	ctx.fillStyle = color;
 	ctx.font = fontSize + 'px monospace';
 
 	// Assuming your canvas element is ctx

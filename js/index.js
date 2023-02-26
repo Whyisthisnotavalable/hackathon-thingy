@@ -1,5 +1,6 @@
 //throw new Error('hi') //tested, and works!
 let points = 10;
+let color = 'lime';
 const options = document.querySelector(".mainButton");
 const consoleX = document.querySelector(".console");
 const randomChar = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123467890!@#$%^&*()';
@@ -280,70 +281,70 @@ function getOptions() {
 	if(chosenX[0].includes("Ω")) {
 		chosenX[0] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Choosing a password like this will ensure that you will be safer online', true); getOptions()" style="top: 50px;"id="one">${
+		`<button onclick="log('Choosing a password like this will ensure that you will be safer online', true); getOptions()" style="top: 100px;"id="one">${
 		chosenX[0]
 		}</button>`;
 	} 
 	if(chosenX[1].includes("Ω")) {
 		chosenX[1] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('This is a strong password.', true); getOptions()" style="top: 100px;"id="two">${
+		`<button onclick="log('This is a strong password.', true); getOptions(); addPoints();" style="top: 150px;"id="two">${
 		chosenX[1]
 		}</button>`;
 	} 
 	if(chosenX[2].includes("Ω")) {
 		chosenX[2] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('This password will help you stay safer online because it is fully random; there are uppercase and lowercase letters, there are numbers, and there are also special characters. these characteristics in a password help you stay safer.', true); getOptions(); addPoints();" style="top: 150px;"id="three">${
+		`<button onclick="log('This password will help you stay safer online because it is fully random; there are uppercase and lowercase letters, there are numbers, and there are also special characters. these characteristics in a password help you stay safer.', true); getOptions(); addPoints();" style="top: 200px;"id="three">${
 		chosenX[2]
 		}</button>`;
 	}	
 	if(chosenX[0].includes("δ")) {
 		chosenX[0] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('This could be better, as strong passwords include letters and symbols.', true); getOptions()" style="top: 50px;"id="one">${
+		`<button onclick="log('This could be better, as strong passwords include letters and symbols.', true); getOptions(); addPoints();" style="top: 100px;"id="one">${
 		chosenX[0]
 		}</button>`;
 	} 
 	if(chosenX[1].includes("δ")) {
 		chosenX[1] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('This could be better, this password only has numbers, try choosing passwords harder to remember.', true); getOptions()" style="top: 100px;"id="two">${
+		`<button onclick="log('This could be better, this password only has numbers, try choosing passwords harder to remember.', true); getOptions()" style="top: 150px;"id="two">${
 		chosenX[1]
 		}</button>`;
 	} 
 	if(chosenX[2].includes("δ")) {
 		chosenX[2] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('This password only has numbers. Strong passwords include letters and symbols.', true); getOptions()" style="top: 150px;"id="three">${
+		`<button onclick="log('This password only has numbers. Strong passwords include letters and symbols.', true); getOptions()" style="top: 200px;"id="three">${
 		chosenX[2]
 		}</button>`;
 	}	
 	if(chosenX[0].includes("Θ")) {
 		chosenX[0] = decided3;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Though this would be a great username, this password would be easy to hack.', true); getOptions()" style="top: 50px;"id="one">${
+		`<button onclick="log('Though this would be a great username, this password would be easy to hack.', true); getOptions()" style="top: 100px;"id="one">${
 		chosenX[0]
 		}</button>`;
 	} 
 	if(chosenX[1].includes("Θ")) {
 		chosenX[1] = decided3;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Passwords with words in them are easy to guess, and hackers try these words first.', true); getOptions()" style="top: 100px;"id="two">${
+		`<button onclick="log('Passwords with words in them are easy to guess, and hackers try these words first.', true); getOptions()" style="top: 150px;"id="two">${
 		chosenX[1]
 		}</button>`;
 	} 
 	if(chosenX[2].includes("Θ")) {
 		chosenX[2] = decided3;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('Passwords with words in them are easy to guess, and hackers try these words first.', true); getOptions()" style="top: 150px;"id="three">${
+		`<button onclick="log('Passwords with words in them are easy to guess, and hackers try these words first.', true); getOptions()" style="top: 200px;"id="three">${
 		chosenX[2]
 		}</button>`;
 	}
 	log('<div>>New Options Created</div>');
 	return false;
 }
-options.addEventListener('click', getOptions, false)
+//options.addEventListener('click', getOptions, false)
 window.addEventListener('contextmenu', function(event) {
 	event.preventDefault();
 	document.querySelector(".choose").innerHTML = '';
@@ -387,3 +388,44 @@ setInterval(() => {
 	localStorage.setItem("points", JSON.stringify(points));
 	document.querySelector('.points').innerHTML = `Points: ${points}`;
 }, 0)
+//getOptions()
+function tab(index = 0) {
+	if(index == 0) {
+		//colors 
+		color = 'lime';
+		const div = document.querySelectorAll('div')
+		for(let i = 0; i < div.length; i++) {
+			div[i].style.borderColor = color;
+			div[i].style.color = color;
+		}
+		clearOptions();
+		getOptions();
+	} else if(index == 1) {
+		//colors 
+		color = 'red';
+		const div = document.querySelectorAll('div')
+		for(let i = 0; i < div.length; i++) {
+			div[i].style.borderColor = color;
+			div[i].style.color = color;
+		}
+	} else if(index == 2) {
+		//colors 
+		color = 'yellow';
+		const div = document.querySelectorAll('div')
+		for(let i = 0; i < div.length; i++) {
+			div[i].style.borderColor = color;
+			div[i].style.color = color;
+		}
+	} else if(index == 3) {
+		//colors like you wouldn't believe
+		color = '#FF00FF';
+		const div = document.querySelectorAll('div')
+		for(let i = 0; i < div.length; i++) {
+			div[i].style.borderColor = color;
+			div[i].style.color = color;
+		}
+	}
+}
+function clearOptions() {
+	document.querySelector("#options").innerHTML = '';
+}
