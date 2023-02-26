@@ -302,7 +302,7 @@ function getOptions() {
 	if(chosenX[0].includes("δ")) {
 		chosenX[0] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<button onclick="log('This could be better, as strong passwords include letters and symbols.', true); getOptions(); addPoints();" style="top: 100px;"id="one">${
+		`<button onclick="log('This could be better, as strong passwords include letters and symbols.', true); getOptions();" style="top: 100px;"id="one">${
 		chosenX[0]
 		}</button>`;
 	} 
@@ -550,8 +550,10 @@ function realPassword() {
   }
   password_W = password_W.replace('a', '@')
   password_W = password_W.replace('s', '$')
-  password_W = password_W.replace(worstChar[Math.floor(Math.random() * (worstChar.length))])
-
+  password_W = password_W.replace(password_W.charAt(Math.floor(password_W.length * Math.random())), randomChar.charAt(Math.floor(randomChar.length * Math.random())))
+  password_W = password_W.replace(password_W.charAt(Math.floor(password_W.length * Math.random())), randomChar.charAt(Math.floor(randomChar.length * Math.random())))
+  password_W = password_W.replace(password_W.charAt(Math.floor(password_W.length * Math.random())), randomChar.charAt(Math.floor(randomChar.length * Math.random())))
+  
   document.querySelector("#options").innerHTML = `<button style="top: 150px;" onclick='realPassword();'>` + password_W + '</button>';
   copyTextToClipboard(password_W);
   const buttonX = document.querySelectorAll('button')
