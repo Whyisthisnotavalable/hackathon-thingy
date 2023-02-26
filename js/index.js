@@ -1,5 +1,5 @@
 //throw new Error('hi') //tested, and works!
-let points = 10;
+let points = 0;
 let color = 'lime';
 const options = document.querySelector(".mainButton");
 const consoleX = document.querySelector(".console");
@@ -398,6 +398,7 @@ function tab(index = 0) {
 			div[i].style.borderColor = color;
 			div[i].style.color = color;
 		}
+		document.querySelector('#Matrix').style.opacity = 0.3;
 		clearOptions();
 		getOptions();
 	} else if(index == 1) {
@@ -408,6 +409,14 @@ function tab(index = 0) {
 			div[i].style.borderColor = color;
 			div[i].style.color = color;
 		}
+		document.querySelector('#Matrix').style.opacity = 0.5;
+		clearOptions();
+		realPassword();
+		const buttonX = document.querySelectorAll('button')
+		for(let i = 0; i < buttonX.length; i++) {
+			buttonX[i].style.borderColor = color;
+			buttonX[i].style.color = color;
+		}
 	} else if(index == 2) {
 		//colors 
 		color = 'yellow';
@@ -416,16 +425,188 @@ function tab(index = 0) {
 			div[i].style.borderColor = color;
 			div[i].style.color = color;
 		}
+		document.querySelector('#Matrix').style.opacity = 0.3;
+		clearOptions();
 	} else if(index == 3) {
 		//colors like you wouldn't believe
-		color = '#FF00FF';
+		color = '#7704FF';
 		const div = document.querySelectorAll('div')
 		for(let i = 0; i < div.length; i++) {
 			div[i].style.borderColor = color;
 			div[i].style.color = color;
 		}
+		document.querySelector('#Matrix').style.opacity = 0.8;
+		clearOptions();
+		getSource();
 	}
 }
 function clearOptions() {
 	document.querySelector("#options").innerHTML = '';
+}
+function getSource(index, fake = false) {
+	log('>Choose the link that best resembles a fake link');
+	setTimeout(function() {consoleX.scrollTo(0, consoleX.scrollHeight);}, 100)
+	document.querySelector("#options").innerHTML = ''; //just in case
+	const fax = ['edu', 'com', 'org', 'net'];
+	let chosen = "https://"; 
+	for(let i = 0, len = 2; i < len; i++) {
+		let letter = worstChar[Math.floor(worstChar.length * Math.random())];
+		chosen += letter + (i < 1 ? ' ' : '');
+		chosen = chosen.replaceAll(' ','.');
+	}
+	chosen += "." + fax[Math.floor(fax.length * Math.random())];
+	const decided = chosen;
+	chosen += 'Ω';
+	//document.querySelector("#options").innerHTML += `<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${decided}</a>`;
+	let chosen1 = "http://"; //second one
+	for(let i = 0, len = 1; i < len; i++) {
+		let letter = worstChar[Math.floor(worstChar.length * Math.random())];
+		chosen1 += letter + (i < 1 ? ' ' : '');
+		chosen1 = chosen1.replaceAll(' ','.');
+	}
+	chosen1 += fax[Math.floor(fax.length * Math.random())];
+	const decided1 = chosen1;
+	chosen1 += 'δ' 
+	//document.querySelector("#options").innerHTML += `<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${decided1}</a>`;
+	let chosen2 = "https://"; //third
+	for(let i = 0, len = 3; i < len; i++) {
+		let letter = worstChar[Math.floor(worstChar.length * Math.random())];
+		chosen2 += letter + (i < 1 ? ' ' : '');
+		chosen2= chosen2.replaceAll(' ','.');
+	}
+	const decided2 = chosen2;
+	chosen2 += 'Θ';
+	//document.querySelector("#options").innerHTML += `<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${decided2}</a>`;
+	let chosenX = [chosen, chosen1, chosen2];
+	shuffle(chosenX);
+		if(chosenX[0].includes("Ω")) {
+		chosenX[0] = decided;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" onclick='addPoints(); getSource();' style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
+	} 
+	if(chosenX[1].includes("Ω")) {
+		chosenX[1] = decided;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" onclick='addPoints(); getSource();'style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
+	} 
+	if(chosenX[2].includes("Ω")) {
+		chosenX[2] = decided;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" onclick='addPoints(); getSource();'style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
+	}	
+	if(chosenX[0].includes("δ")) {
+		chosenX[0] = decided1;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
+	} 
+	if(chosenX[1].includes("δ")) {
+		chosenX[1] = decided1;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
+	} 
+	if(chosenX[2].includes("δ")) {
+		chosenX[2] = decided1;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
+	}	
+	if(chosenX[0].includes("Θ")) {
+		chosenX[0] = decided2;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
+	} 
+	if(chosenX[1].includes("Θ")) {
+		chosenX[1] = decided2;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
+	} 
+	if(chosenX[2].includes("Θ")) {
+		chosenX[2] = decided2;
+		document.querySelector("#options").innerHTML += 
+		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
+	}
+	log('>Options created')
+}
+let passwordBase = worstChar[Math.floor(Math.random() * (worstChar.length))]
+let passwordBase2 = worstChar[Math.floor(Math.random() * (worstChar.length))]
+let password_W = passwordBase.charAt(0).toUpperCase() + passwordBase.slice(1) + passwordBase2.charAt(0).toUpperCase() + passwordBase2.slice(1)
+let possibleChar = "1234567890~!@#$%^&*)("
+let chosenCharactar = ''
+function chooseCharactar() {
+  chosenCharactar = possibleChar.charAt(Math.floor(Math.random() * possibleChar.length))
+  return chosenCharactar
+}
+function realPassword() {
+  for(let i = 0; i < password_W.length; i++) {
+    chooseCharactar()
+	let stuff1 = [password_W.slice(0, i), chosenCharactar, password_W.slice(i)];
+	shuffle(stuff1);
+	stuff1.join('');
+	let stuff2 = [password_W.slice(0, i), (password_W.charAt(i)).toUpperCase, password_W.slice(i)];
+	shuffle(stuff2);
+	stuff2.join('');
+  }
+  password_W = password_W.replace('a', '@')
+  password_W = password_W.replace('s', '$')
+  password_W = password_W.replace(worstChar[Math.floor(Math.random() * (worstChar.length))])
+  document.querySelector("#options").innerHTML = '<button style="top: 150px;">' + password_W + '</button>';
+  copyTextToClipboard(password_W);
+  return password_W
+}
+
+function copyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+
+  //
+  // *** This styling is an extra step which is likely not required. ***
+  //
+  // Why is it here? To ensure:
+  // 1. the element is able to have focus and selection.
+  // 2. if the element was to flash render it has minimal visual impact.
+  // 3. less flakyness with selection and copying which **might** occur if
+  //    the textarea element is not visible.
+  //
+  // The likelihood is the element won't even render, not even a
+  // flash, so some of these are just precautions. However in
+  // Internet Explorer the element is visible whilst the popup
+  // box asking the user for permission for the web page to
+  // copy to the clipboard.
+  //
+
+  // Place in the top-left corner of screen regardless of scroll position.
+  textArea.style.position = 'absolute';
+  textArea.style.bottom = 0;
+  textArea.style.right = 0;
+
+  // Ensure it has a small width and height. Setting to 1px / 1em
+  // doesn't work as this gives a negative w/h on some browsers.
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+
+  // We don't need padding, reducing the size if it does flash render.
+  textArea.style.padding = 0;
+
+  // Clean up any borders.
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  //textArea.style.display = 'none';
+  // Avoid flash of the white box if rendered for any reason.
+  textArea.style.background = 'transparent';
+
+
+  textArea.value = text;
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Copying text command was ' + msg);
+  } catch (err) {
+    console.log('Oops, unable to copy');
+  }
+
+  document.body.removeChild(textArea);
 }
