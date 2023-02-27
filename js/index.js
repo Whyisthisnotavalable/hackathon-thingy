@@ -445,7 +445,7 @@ function clearOptions() {
 	document.querySelector("#options").innerHTML = '';
 }
 function getSource(index, fake = false) {
-	log('>Choose the link that best resembles a fake link');
+	log('>Choose the link that best resembles a real link');
 	setTimeout(function() {consoleX.scrollTo(0, consoleX.scrollHeight);}, 100)
 	document.querySelector("#options").innerHTML = ''; //just in case
 	const fax = ['edu', 'com', 'org', 'net'];
@@ -483,52 +483,52 @@ function getSource(index, fake = false) {
 		if(chosenX[0].includes("Ω")) {
 		chosenX[0] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" onclick='addPoints(); getSource();' style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is dangerous because it is not secure. Notice that at the beginning of the link, there is no https, instead there is only a http. This lack of an s shows whether the link is secure or not.");' style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
 	} 
 	if(chosenX[1].includes("Ω")) {
 		chosenX[1] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" onclick='addPoints(); getSource();'style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
+		`<a class="link" onclick="getSource(); log("This link is dangerous because it is not secure. Notice that at the beginning of the link, there is no https, instead there is only a http. This lack of an s shows whether the link is secure or not."); ' style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
 	} 
 	if(chosenX[2].includes("Ω")) {
 		chosenX[2] = decided;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" onclick='addPoints(); getSource();'style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is dangerous because it is not secure. Notice that at the beginning of the link, there is no https, instead there is only a http. This lack of an s shows whether the link is secure or not."); ' style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
 	}	
 	if(chosenX[0].includes("δ")) {
 		chosenX[0] = decided1;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is not secure because it has no domain at the end of the link. Websites like these are usually suspicious and hackers may attack your security.");' style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided1.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided1.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
 	} 
 	if(chosenX[1].includes("δ")) {
 		chosenX[1] = decided1;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is not secure because it has no domain at the end of the link. Websites like these are usually suspicious and hackers may attack your security.");' style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided1.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided1.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
 	} 
 	if(chosenX[2].includes("δ")) {
 		chosenX[2] = decided1;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is not secure because it has no domain at the end of the link. Websites like these are usually suspicious and hackers may attack your security.");' style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided1.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided1.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
 	}	
 	if(chosenX[0].includes("Θ")) {
 		chosenX[0] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is safe and secure because it has all the green flags. The site is secure; it has a domain at the end, and the site is secure because it begins with https. Good job on checking correctly!");' style="text-decoration: none; border-radius: 2px; top: 100px; left: calc(50vw - ${(decided2.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided2.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[0]}</a>`;
 	} 
 	if(chosenX[1].includes("Θ")) {
 		chosenX[1] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is safe and secure because it has all the green flags. The site is secure; it has a domain at the end, and the site is secure because it begins with https. Good job on checking correctly!");' style="text-decoration: none; border-radius: 2px; top: 150px; left: calc(50vw - ${(decided2.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided2.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[1]}</a>`;
 	} 
 	if(chosenX[2].includes("Θ")) {
 		chosenX[2] = decided2;
 		document.querySelector("#options").innerHTML += 
-		`<a class="link" href="${decided}" style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
+		`<a class="link" onclick='getSource(); log("This link is safe and secure because it has all the green flags. The site is secure; it has a domain at the end, and the site is secure because it begins with https. Good job on checking correctly!");' style="text-decoration: none; border-radius: 2px; top: 200px; left: calc(50vw - ${(decided2.length * 6) + "px"}); text-align: center; padding: 0.5em; background-color: black; position: absolute; width: ${(decided2.length * 10) + "px"}; border: 1px solid ${color}; color: ${color};">${chosenX[2]}</a>`;
 	}
 	log('>Options created')
 }
 
-let possibleChar = "1234567890~!@#$%^&*)("
+let possibleChar = "1234567890~!@#$%^&*)({}[]|/?.,><`δΦΩ∞∩εφτΘ§±⌡≥≤÷≈°∙•";
 let chosenCharactar = ''
 function chooseCharactar() {
   chosenCharactar = possibleChar.charAt(Math.floor(Math.random() * possibleChar.length))
